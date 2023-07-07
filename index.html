@@ -1,0 +1,109 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Contact us</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="col-md-6 col-12 mx-auto">
+            <div class="card mt-5 p-5 ">
+                <h2 class="text-center fw-bold">Contact Us</h2>
+                <form>
+                    <span class="fw-bold">YOUR NAME *</span>
+                    <div class="row mb-3">
+                        <div class="col-md-6 mb-2">
+                            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First name">
+                            <P class="pt-2 error_color" id="fname_error"></P>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last name">
+                            <P class="pt-2 error_color" id="lname_error"></P>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="first_name" class="form-label fw-bold">EMAIL ADDRESS *</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                            <p class="pt-2 error_color" id="email_error"></p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="number" class="form-label fw-bold">PHONE NUMBER *</label>
+                            <input type="text" class="form-control" id="number" name="number" placeholder="Eg. +1 800 000000">
+                            <P class="pt-2 error_color" id="number_error"></P>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="message" class="form-label fw-bold">MESSAGE</label>
+
+                            <textarea class="form-control pb-5" id="message" placeholder="Enter your message"></textarea>
+                            <P class="mt-2 error_color fst-italic fw-bold" d="message_error"></P>
+                        </div>
+
+                    </div>
+                    <div class="text-center mt-5">
+                        <button class="btn btn-dark rounded-pill" type="submit" value="Submit" id="submit">Submit  &#8827;</button>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <script>
+            function validateEmail(email) {
+                const res = /^\S+@\S+\.\S+$/;
+                return res.test(String(email).toLowerCase());
+            }
+
+            function valid() {
+                var first_name = document.getElementById("first_name").value;
+                var last_name = document.getElementById("last_name").value;
+                var number = document.getElementById("number").value;
+                var email = document.getElementById("email").value;
+                var message = document.getElementById("message").value;
+                if ((first_name == "")) {
+
+                    document.getElementById('fname_error').innerHTML = "First name cannot be empty";
+                }
+                if ((last_name == "")) {
+                    document.getElementById('lname_error').innerHTML = "Last name cannot be empty";
+                }
+                if (!(number == "")) {
+                    if (number.length < 10) {
+                        document.getElementById('number_error').innerHTML = "Invalid number";
+                    }
+
+                } else {
+                    document.getElementById('number_error').innerHTML = "number cannot be empty";
+
+                }
+                if (!(email == "")) {
+                    if (!validateEmail(email)) {
+                        document.getElementById('email_error').innerHTML = "invalid address";
+                    }
+                } else {
+                    document.getElementById('email_error').innerHTML = "Your email is invalid";
+                }
+
+                if ((message == "")) {
+                    document.getElementById('message_error').innerHTML = "Message is required";
+                }
+            }
+            //prevent events to run before you submit the form
+            document.getElementById("submit").addEventListener("click", function(event) {
+                event.preventDefault();
+                valid();
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>

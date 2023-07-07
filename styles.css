@@ -1,0 +1,7 @@
+body {
+    background: linear-gradient(275deg, rgba(13, 13, 159, 1) 0%, rgb(140, 0, 255) 100%);
+}
+
+.error_color {
+    color: rgb(255, 85, 85);
+}
